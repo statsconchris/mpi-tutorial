@@ -3,31 +3,35 @@
       include 'mpif.h'
       PARAMETER( NDIM = 10 )
       DIMENSION A(NDIM)
-C
+
       call MPI_INIT( ierr )
       call MPI_COMM_RANK( MPI_COMM_WORLD, myid, ierr )
       call MPI_COMM_SIZE( MPI_COMM_WORLD, numprocs, ierr )
       print *, 'Process ', myid, ' of ', numprocs, ' is alive'
-      MM=NDIM/numprocs
-      IMIN=1+MM*myid
-      IMAX=MM*(myid+1)
-C
+
+      ! for 2 processors
+      MM=NDIM/numprocs ! MM=5
+      IMIN=1+MM*myid   ! IMIN = 1 or 6
+      IMAX=MM*(myid+1) ! IMAX = 5 or 10
+
       DO I=IMIN,IMAX
       A(I)=I
       ENDDO
-C
+
+      ! first processor
       IF (myid.EQ.0) THEN
       DO I=1,NDIM
       WRITE(6,*) I,A(I)
       ENDDO
       ENDIF
-C
+
+      ! second processor
       IF (myid.EQ.1) THEN
       DO I=1,NDIM
       WRITE(6,*) I,A(I)
       ENDDO
       ENDIF
-C
+
       call MPI_FINALIZE(ierr)
       STOP
       END

@@ -6,12 +6,20 @@ e.g.,
 
 ## Run the code
 
-`mpirun -np 20 hello-world.out`
+`mpirun -np 2 hello-world.out`
 
-In this example, 20 processors are requested.
+or as root user (not recommended)
+
+`mpirun --allow-run-as-root -np 2 hello-world.out`
+
+In this example, 2 processors are requested.
 
 ## Examples
 
 1) hello-world.f
 
 output: compute-node name and process name
+
+2) h1.f
+
+ 
