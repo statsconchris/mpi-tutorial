@@ -2,7 +2,7 @@
       IMPLICIT REAL*8(A-H,O-Z)
       PARAMETER( NDIM = 10 )
       DIMENSION A(NDIM)
-C
+      
       IMAX=NDIM
       DO I=1,IMAX
       A(I)=I
