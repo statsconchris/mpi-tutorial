@@ -1,2 +1,2 @@
-# mpi-tutorial
+# Tutorial: MPI Basics
 MPI basics
