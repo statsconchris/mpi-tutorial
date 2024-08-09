@@ -10,7 +10,7 @@
       call MPI_COMM_SIZE( MPI_COMM_WORLD, numprocs, ierr )
       print *, 'Process ', myid, ' of ', numprocs, ' is alive'
 
-      ! two processors
+      ! 2 processors
       MM=NDIM/numprocs ! MM=5
       IMIN=1+MM*myid   ! IMIN=1 or 6
       IMAX=MM*(myid+1) ! IMAX=5 or 10
@@ -19,26 +19,26 @@
       A(I)=I
       ENDDO
 
-      ! processor 1
+      ! first processor 
       IF (myid.EQ.0) THEN
       DO I=1,NDIM
       WRITE(6,*) I,A(I)
       ENDDO
       ENDIF
 
-      ! processor 2
+      ! second processor 
       IF (myid.EQ.1) THEN
       DO I=1,NDIM
       WRITE(6,*) I,A(I)
       ENDDO
       ENDIF
 
-      ! gather all results in B
+      ! gather all results in B matrix
       call MPI_ALLGATHER(A(IMIN),MM,MPI_DOUBLE_PRECISION,
      &     B(1),MM,MPI_DOUBLE_PRECISION,
      &     MPI_COMM_WORLD,ierr)
 
-      ! print B with processor 1
+      ! print B with first processor
       IF (myid.EQ.0) THEN
       WRITE(6,*) 'HI !',myid
       DO I=1,NDIM
@@ -46,7 +46,7 @@
       ENDDO
       ENDIF
 
-      ! print B with processor 2
+      ! print B with second processor
       IF (myid.EQ.1) THEN
       WRITE(6,*) 'HI !',myid
       DO I=1,NDIM

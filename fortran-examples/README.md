@@ -31,4 +31,4 @@ In this example, 2 processors are requested.
 
 - `h4.f`
 
-  MPI 
+  MPI. Prints 2D array, A(), splitted in 2 processors. Then gather all results and first processor prints the full output 

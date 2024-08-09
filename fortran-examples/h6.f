@@ -5,7 +5,7 @@
       PARAMETER( NDY = 4 )
       DIMENSION A(NDX,NDY)
       DIMENSION B(NDX,NDY)
-C
+
       call MPI_INIT( ierr )
       call MPI_COMM_RANK( MPI_COMM_WORLD, myid, ierr )
       call MPI_COMM_SIZE( MPI_COMM_WORLD, numprocs, ierr )
@@ -13,9 +13,9 @@ C
       MM=NDY/numprocs
       IMIN=1+MM*myid
       IMAX=MM*(myid+1)
-C
+
       A=2.0D0
-C
+
       II=0
       DO J=IMIN,IMAX
       DO I=1,NDX
@@ -25,7 +25,7 @@ C
       A(I,J)=III+A(I,J)
       ENDDO
       ENDDO
-C
+
       IF (myid.EQ.0) THEN
       WRITE(6,*) 'C-------------C'
       DO J=1,NDY
@@ -35,7 +35,7 @@ C
       ENDDO
       WRITE(6,*) 'C-------------C'
       ENDIF
-C
+
       IF (myid.EQ.1) THEN
       WRITE(6,*) 'C-------------C'
       DO J=1,NDY
@@ -45,11 +45,13 @@ C
       ENDDO
       WRITE(6,*) 'C-------------C'
       ENDIF
-C
+      
+      ! sum both processors outputs
       call MPI_ALLREDUCE(A(1,1),B(1,1),NDX*NDY,MPI_DOUBLE_PRECISION,
      &     MPI_SUM,
      &     MPI_COMM_WORLD,ierr)
-C
+
+      ! print the sum with the first processor
       IF (myid.EQ.0) THEN
       WRITE(6,*) 'HI !',myid
       DO J=1,NDY
@@ -58,7 +60,7 @@ C
       ENDDO
       ENDDO
       ENDIF
-C
+
       call MPI_FINALIZE(ierr)
       STOP
       END
