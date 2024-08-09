@@ -14,6 +14,6 @@ In this example, 20 processors are requested.
 
 - `h1.f`
 
-  output: no MPI
+  output: no MPI. Prints matrix values
 
   
