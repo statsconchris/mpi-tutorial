@@ -31,4 +31,16 @@ In this example, 2 processors are requested.
 
 - `h4.f`
 
-  MPI. Prints 2D array, A(), splitted in 2 processors. Then gather all results and first processor prints the full output 
+  MPI. Prints 2D array, A(), splitted in 2 processors. Then gather all results and first processor prints the full output
+
+- `h5.f`
+
+  MPI. Prints 2D array, A(). First processor's output is casted, i.e., first processor prints its result. Second processor prints the first processor's result.
+
+- `h6.f`
+
+  MPI. Prints 2D arrays. Each processor computes an array with different values.Then, we sum bothh and print the output using the first processor.
+
+- `h5.f`
+
+  MPI. Similar to h5.f; however, here we use a subroutine. 
