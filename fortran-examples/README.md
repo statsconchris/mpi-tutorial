@@ -2,14 +2,10 @@
 `mpif90 -o hello-world.out hello-world.f`
 
 ## Run the code
-<<<<<<< HEAD
 
 `mpirun -np 2 hello-world.out`
-=======
-`mpirun -np 20 hello-world.out`
->>>>>>> 6b8691bf06881d9734f164c6a118e7bb5ecc6d64
 
-or as root user (not recommended)
+or as root user (not recommended):
 
 `mpirun --allow-run-as-root -np 2 hello-world.out`
 
@@ -19,18 +15,20 @@ In this example, 2 processors are requested.
 
 - `hello-world.f`
 
-  output: compute-node name and process number
+   Prints compute-node name and process number
 
 - `h1.f`
 
-  output: no MPI. Prints matrix values
+  No MPI. Prints 1D array, A()
 
-<<<<<<< HEAD
-output: compute-node name and process name
+- `h2.f`
 
-2) h1.f
+  MPI. Prints 1D array, A(), splitted in 2 processors. Processor 1 from A(1) to A(5). Processor 2 from A(6) to A(10)
 
- 
-=======
-  
->>>>>>> 6b8691bf06881d9734f164c6a118e7bb5ecc6d64
+- `h3.f`
+
+  MPI. Prints 1D array, A(), splitted in 2 processors. Then gather all results an each processor prints the full output
+
+- `h4.f`
+
+  MPI 
