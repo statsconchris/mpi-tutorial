@@ -41,6 +41,6 @@ In this example, 2 processors are requested.
 
   MPI. Prints 2D arrays. Each processor computes an array with different values. Then, we add both and print the output using the first processor.
 
-- `h5.f`
+- `h7.f`
 
-  MPI. Similar to h5.f; however, here we use a subroutine. 
+  MPI. Similar to `h5.f`; however, here we use a subroutine. 
